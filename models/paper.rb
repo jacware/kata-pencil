@@ -6,4 +6,8 @@ class Paper
   def text
     @text
   end
+
+  def append text
+    @text += text
+  end
 end
