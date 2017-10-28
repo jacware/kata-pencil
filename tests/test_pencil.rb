@@ -7,5 +7,7 @@ class TestPencil < Minitest::Test
     pencil = Pencil.new
     pencil.write "test", paper
     assert_equal "test", paper.text
+    pencil.write " 2", paper
+    assert_equal "test 2", paper.text
   end
 end
