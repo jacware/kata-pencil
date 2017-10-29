@@ -1,25 +1,26 @@
 class Pencil
-  DEFAULT_DURABILITY = 1000
   attr_reader :durability, :eraser_durability
 
   def initialize params={}
-    @durability = params[:durability] || DEFAULT_DURABILITY
+    @durability          = params[:durability]
+    @length              = params[:length]
+    @eraser_durability   = params[:eraser_durability]
     @original_durability = @durability
-    @length = params[:length]
-    @eraser_durability = params[:eraser_durability]
   end
 
   def write text, paper
-    #calculate length without whitespace & double the count for uppercase chars
-    durability_length = text.printable_length + text.uppercase_count
-    @durability -= durability_length
-    if @durability < 0
-      #stop writing after the durability has reached 0
-      #by blanking out the rest of the string
-      @durability.abs.times do |i|
-        text[text.length-i-1] = ' '
+    if @durability
+      #calculate len without whitespace & double the count for uppercase chars
+      durability_length = text.printable_length + text.uppercase_count
+      @durability -= durability_length
+      if @durability < 0
+        #stop writing after the durability has reached 0
+        #by blanking out the rest of the string
+        @durability.abs.times do |i|
+          text[text.length-i-1] = ' '
+        end
+        @durability = 0
       end
-      @durability = 0
     end
     paper.append text
   end
