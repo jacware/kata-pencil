@@ -6,6 +6,7 @@ class TestPencil < Minitest::Test
     @paper = Paper.new
     @pencil = Pencil.new durability: 100
   end
+
   def test_writing_on_paper
     pencil = Pencil.new
     pencil.write "test", @paper
@@ -38,5 +39,13 @@ class TestPencil < Minitest::Test
     @paper.reset
     pencil.write "thisisatest", @paper
     assert_equal "this       ", @paper.text
+  end
+
+  def test_sharpen_pencil
+    pencil = Pencil.new durability: 5
+    pencil.write "thisisatest", @paper
+    pencil.sharpen
+    pencil.write "more", @paper
+    assert_equal "thisi      more", @paper.text
   end
 end
