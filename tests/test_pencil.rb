@@ -48,4 +48,16 @@ class TestPencil < Minitest::Test
     pencil.write "more", @paper
     assert_equal "thisi      more", @paper.text
   end
+
+  def test_pencil_length_after_sharpening
+    pencil = Pencil.new durability: 10, length: 2
+    pencil.sharpen
+    pencil.write "test", @paper
+    assert_equal 6, pencil.durability
+    pencil.sharpen
+    assert_equal 10, pencil.durability
+    pencil.write "test", @paper
+    pencil.sharpen
+    assert_equal 6, pencil.durability
+  end
 end

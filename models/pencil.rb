@@ -5,6 +5,7 @@ class Pencil
   def initialize params={}
     @durability = params[:durability] || DEFAULT_DURABILITY
     @original_durability = @durability
+    @length = params[:length]
   end
 
   def write text, paper
@@ -19,6 +20,8 @@ class Pencil
   end
 
   def sharpen
+    @length -= 1 if @length
+    return if @length and @length < 0
     @durability = @original_durability
   end
 
