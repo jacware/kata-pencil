@@ -1,1 +1,4 @@
-require 'minitest'
+source 'https://rubygems.org'
+
+gem 'minitest'
+gem 'rake'
