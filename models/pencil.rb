@@ -10,7 +10,9 @@ class Pencil
   end
 
   def write text, paper
-    @durability -= written_length(text)
+    #calculate length without whitespace & double the count for uppercase chars
+    durability_length = text.printable_length + text.uppercase_count
+    @durability -= durability_length
     if @durability < 0
       #stop writing after the durability has reached 0
       #by blanking out the rest of the string
@@ -42,10 +44,5 @@ class Pencil
 
   def edit string, index, paper
     paper.edit string, index
-  end
-
-  def written_length text
-    text = text.gsub(/ |\n/, '') #do not count whitespace
-    text.length + text.uppercase_count #double count for uppercase chars
   end
 end
