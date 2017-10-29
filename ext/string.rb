@@ -1,10 +1,12 @@
 class String
   def lowercase?
-    self == self.downcase
+    return false if self.size > 1
+    ('a'..'z').include? self
   end
 
   def uppercase?
-    self == self.upcase
+    return false if self.size > 1
+    ('A'..'Z').include? self
   end
 
   def lowercase_count
