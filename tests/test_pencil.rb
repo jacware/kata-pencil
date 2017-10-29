@@ -23,4 +23,9 @@ class TestPencil < Minitest::Test
     @pencil.write "1 2\n3", @paper
     assert_equal 97, @pencil.durability
   end
+
+  def test_pencil_durability_case
+    @pencil.write "AAbb", @paper
+    assert_equal 94, @pencil.durability
+  end
 end

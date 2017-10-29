@@ -12,6 +12,6 @@ class Pencil
 
   def written_length text
     text = text.gsub(/ |\n/, '')
-    len = text.length
+    text.length
   end
 end
