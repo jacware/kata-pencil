@@ -69,6 +69,9 @@ class TestPencil < Minitest::Test
   end
 
   def test_eraser_stops_erasing_when_worn_out
-
+    pencil = Pencil.new eraser_durability: 3
+    paper = Paper.new "Buffalo Bill"
+    pencil.erase "Bill", paper
+    assert_equal "Buffalo B   ", paper.text
   end
 end

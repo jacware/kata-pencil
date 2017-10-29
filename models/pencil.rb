@@ -27,7 +27,14 @@ class Pencil
   end
 
   def erase string, paper
-    @eraser_durability -= string.printable_length if @eraser_durability
+    if @eraser_durability
+      @eraser_durability -= string.printable_length
+      #if the durability is less then 0 then only erase the amount available
+      if @eraser_durability < 0
+        string = string[@eraser_durability.abs..string.length]
+        @durability = 0
+      end
+    end
     paper.erase string
   end
 
