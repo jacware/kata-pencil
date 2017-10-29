@@ -12,6 +12,6 @@ class Pencil
 
   def written_length text
     text = text.gsub(/ |\n/, '')
-    text.length
+    text.length + text.uppercase_count
   end
 end
