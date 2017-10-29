@@ -12,6 +12,8 @@ class Pencil
   def write text, paper
     @durability -= written_length(text)
     if @durability < 0
+      #stop writing after the durability has reached 0
+      #by blanking out the rest of the string
       @durability.abs.times do |i|
         text[text.length-i-1] = ' '
       end
