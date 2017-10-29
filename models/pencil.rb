@@ -6,7 +6,12 @@ class Pencil
   end
 
   def write text, paper
-    @durability -= text.length
+    @durability -= written_length(text)
     paper.append text
+  end
+
+  def written_length text
+    text = text.gsub(/ |\n/, '')
+    len = text.length
   end
 end
