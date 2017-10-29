@@ -10,4 +10,8 @@ class Paper
   def append text
     @text += text
   end
+
+  def reset
+    @text = ""
+  end
 end
