@@ -37,7 +37,7 @@ class Pencil
       #if the durability is less then 0 then only erase the amount available
       if @eraser_durability < 0
         string = string[@eraser_durability.abs..string.length]
-        @durability = 0
+        @eraser_durability = 0
       end
     end
     paper.erase string

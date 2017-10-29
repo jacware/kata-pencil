@@ -16,7 +16,7 @@ Start the command line application by running: ``bundle exec ruby app.rb`` from 
 
 ``write`` appends an inputed string to the paper
 
-``sharpen`` resets the pencils durabilty while decreasing its length (if applicable)
+``sharpen`` resets the pencils durability while decreasing its length (if applicable)
 
 ``erase`` replaces the last occurrence of the text provided with white space
 
