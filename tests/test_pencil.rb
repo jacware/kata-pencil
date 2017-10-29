@@ -74,4 +74,10 @@ class TestPencil < Minitest::Test
     pencil.erase "Bill", paper
     assert_equal "Buffalo B   ", paper.text
   end
+
+  def test_that_a_pencil_can_edit
+    @pencil.write "test     test", @paper
+    @pencil.edit "abc", 5, @paper
+    assert_equal "test abc test", @paper.text
+  end
 end

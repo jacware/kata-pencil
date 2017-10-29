@@ -20,4 +20,10 @@ class TestPaper < Minitest::Test
     paper.edit "onion", 3
     assert_equal "An onion a day keeps the doctor away", paper.text
   end
+
+  def test_editing_with_overlap
+    paper = Paper.new "An       a day keeps the doctor away"
+    paper.edit "artichoke", 3
+    assert_equal "An artich@k@ay keeps the doctor away", paper.text
+  end
 end

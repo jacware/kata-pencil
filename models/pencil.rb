@@ -38,6 +38,10 @@ class Pencil
     paper.erase string
   end
 
+  def edit string, index, paper
+    paper.edit string, index
+  end
+
   def written_length text
     text = text.gsub(/ |\n/, '') #do not count whitespace
     text.length + text.uppercase_count #double count for uppercase chars

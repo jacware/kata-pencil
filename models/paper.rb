@@ -21,7 +21,12 @@ class Paper
 
   def edit substr, index
     substr.split('').each_with_index do |char,i|
-      @text[index+i] = char
+      start = index + i
+      if @text[start] == ' '
+        @text[start] = char
+      else
+        @text[start] = '@'
+      end
     end
   end
 
