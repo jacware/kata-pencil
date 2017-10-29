@@ -14,4 +14,10 @@ class TestPaper < Minitest::Test
     paper.erase "test"
     assert_equal "     1     ", paper.text
   end
+
+  def test_editing
+    paper = Paper.new "An       a day keeps the doctor away"
+    paper.edit "onion", 3
+    assert_equal "An onion a day keeps the doctor away", paper.text
+  end
 end

@@ -19,6 +19,12 @@ class Paper
     end
   end
 
+  def edit substr, index
+    substr.split('').each_with_index do |char,i|
+      @text[index+i] = char
+    end
+  end
+
   def reset
     @text = ""
   end
