@@ -25,6 +25,10 @@ class Pencil
     @durability = @original_durability
   end
 
+  def erase string, paper
+    paper.erase string
+  end
+
   def written_length text
     text = text.gsub(/ |\n/, '') #do not count whitespace
     text.length + text.uppercase_count #double count for uppercase chars

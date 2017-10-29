@@ -6,4 +6,12 @@ class TestPaper < Minitest::Test
     paper = Paper.new
     assert_equal "", paper.text
   end
+
+  def test_ereasing
+    paper = Paper.new "test 1 test"
+    paper.erase "test"
+    assert_equal "test 1     ", paper.text
+    paper.erase "test"
+    assert_equal "     1     ", paper.text
+  end
 end
