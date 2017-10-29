@@ -1,20 +1,8 @@
 class String
-  def lowercase?
-    return false if self.size > 1
-    ('a'..'z').include? self
-  end
 
   def uppercase?
     return false if self.size > 1
     ('A'..'Z').include? self
-  end
-
-  def lowercase_count
-    count = 0
-    self.split("").each do |char|
-      count += 1 if char.lowercase?
-    end
-    count
   end
 
   def uppercase_count
@@ -27,5 +15,13 @@ class String
 
   def printable_length
     self.gsub(/ |\n/, '').length
+  end
+
+  def to_integer_or_nil
+    if self == '' or self.nil? or self.to_i.to_s != self
+      return nil
+    else
+      return self.to_i
+    end
   end
 end
