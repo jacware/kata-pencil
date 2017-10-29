@@ -60,4 +60,11 @@ class TestPencil < Minitest::Test
     pencil.sharpen
     assert_equal 6, pencil.durability
   end
+
+  def test_ereaser_for_wearing_out
+    pencil = Pencil.new eraser_durability: 10
+    paper = Paper.new "this is a test"
+    pencil.erase "is ", paper
+    assert 8, pencil.eraser_durability
+  end
 end

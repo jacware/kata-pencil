@@ -22,4 +22,8 @@ class TestExtString < Minitest::Test
     assert_equal 2, "AAbbb12".uppercase_count
     assert_equal 3, "AAbbb12".lowercase_count
   end
+
+  def test_count_non_whitespace
+    assert_equal 4, "11 1\n1".printable_length
+  end
 end

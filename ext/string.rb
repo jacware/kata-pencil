@@ -24,4 +24,8 @@ class String
     end
     count
   end
+
+  def printable_length
+    self.gsub(/ |\n/, '').length
+  end
 end

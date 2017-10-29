@@ -1,11 +1,12 @@
 class Pencil
   DEFAULT_DURABILITY = 1000
-  attr_reader :durability
+  attr_reader :durability, :eraser_durability
 
   def initialize params={}
     @durability = params[:durability] || DEFAULT_DURABILITY
     @original_durability = @durability
     @length = params[:length]
+    @eraser_durability = params[:eraser_durability]
   end
 
   def write text, paper
@@ -26,6 +27,7 @@ class Pencil
   end
 
   def erase string, paper
+    @eraser_durability -= string.printable_length if @eraser_durability
     paper.erase string
   end
 
