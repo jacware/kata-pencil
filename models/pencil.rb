@@ -9,20 +9,7 @@ class Pencil
   end
 
   def write text, paper
-    if @durability
-      #calculate len without whitespace & double the count for uppercase chars
-      durability_length = text.printable_length + text.uppercase_count
-      @durability -= durability_length
-      if @durability < 0
-        #stop writing after the durability has reached 0
-        #by blanking out the rest of the string
-        @durability.abs.times do |i|
-          text[text.length-i-1] = ' '
-        end
-        @durability = 0
-      end
-    end
-    paper.append text
+    paper.append text_after_durability_check(text)
   end
 
   def sharpen
@@ -43,7 +30,19 @@ class Pencil
     paper.erase string
   end
 
-  def edit string, index, paper
-    paper.edit string, index
+  def edit text, index, paper
+    paper.edit text_after_durability_check(text), index
+  end
+
+private
+  def text_after_durability_check text
+    if @durability
+      @durability -= text.printable_length + text.uppercase_count
+      if @durability < 0
+        @durability.abs.times {|i| text[text.length-i-1] = ' '}
+        @durability = 0
+      end
+    end
+    text
   end
 end

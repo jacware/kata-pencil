@@ -80,4 +80,10 @@ class TestPencil < Minitest::Test
     @pencil.edit "abc", 5, @paper
     assert_equal "test abc test", @paper.text
   end
+
+  def test_that_editing_reduces_durability
+    @pencil.write "     ", @paper
+    @pencil.edit "test", 0, @paper
+    assert_equal 96, @pencil.durability
+  end
 end
