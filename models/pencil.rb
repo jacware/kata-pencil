@@ -28,23 +28,21 @@ class Pencil
 
 private
   def text_after_durability_check text
-    if @durability
-      @durability -= text.printable_length + text.uppercase_count
-      if @durability < 0
-        @durability.abs.times {|i| text[text.length-i-1] = ' '}
-        @durability = 0
-      end
+    return text if !@durability
+    @durability -= text.printable_length + text.uppercase_count
+    if @durability < 0
+      @durability.abs.times {|i| text[text.length-i-1] = ' '}
+      @durability = 0
     end
     text
   end
 
   def text_after_eraser_durability_check text
-    if @eraser_durability
-      @eraser_durability -= text.printable_length
-      if @eraser_durability < 0
-        text = text[@eraser_durability.abs..text.length]
-        @eraser_durability = 0
-      end
+    return text if !@eraser_durability
+    @eraser_durability -= text.printable_length
+    if @eraser_durability < 0
+      text = text[@eraser_durability.abs..text.length]
+      @eraser_durability = 0
     end
     text
   end
